@@ -12,9 +12,6 @@ let objPerson = {
        country: '',   
 }
 
-//
-
-    
 
 // 1. git init
 // 2. git add -A (<---to add all files)
@@ -51,7 +48,7 @@ const App = () => {
               if (rdRegister.checked == true) {
                      console.log('MADE IT TO (( REGISTER )) FETCH STATEMENT')
 
-                     fetch('http://localhost:3000/register', {
+                     fetch('https://person-resource-api.herokuapp.com', {         
                             method: 'POST', 
                             headers: {'Content-Type': 'application/json'}, 
                             body: JSON.stringify( regPersonInfo ),
@@ -59,14 +56,14 @@ const App = () => {
                      })   
                      .then(res => res.json())
                      .then(data => console.log(data))
-                     .catch(err => console.log('The http://localhost:3000/register response error status --> ' + res.status + res.statusText))   
+                     .catch(err => console.log('response error status --> ' + res.status + res.statusText))   
                      
               }
 
        // OTHERWISE GET PERSON BY ID 
               else if (rdGetByID.checked == true) {
 
-                     fetch('http://localhost:3000/person/' + regPersonInfo.ID) 
+                     fetch('https://git.heroku.com/person-resource-api.git' + regPersonInfo.ID) 
                      .then(res => res.json())
                      .then(data => {
                             let retrievePerson = data[0];
