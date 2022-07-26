@@ -63,7 +63,7 @@ const App = () => {
        // OTHERWISE GET PERSON BY ID 
               else if (rdGetByID.checked == true) {
 
-                     fetch('https://git.heroku.com/person-resource-api.git' + regPersonInfo.ID) 
+                     fetch('https://person-resource-api.herokuapp.com' + regPersonInfo.ID) 
                      .then(res => res.json())
                      .then(data => {
                             let retrievePerson = data[0];
