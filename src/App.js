@@ -48,7 +48,10 @@ const App = () => {
               if (rdRegister.checked == true) {
                      console.log('MADE IT TO (( REGISTER )) FETCH STATEMENT')
 
-                     fetch('https://person-resource-api.herokuapp.com', {         
+       //https://person-resource-api.herokuapp.com <-- Location of the API server (URL)
+       //https://git.heroku.com/person-resource-api.git <--ACTUAL ENDPOINT OF THE API
+
+                     fetch('https://git.heroku.com/person-resource-api.git/register', {         
                             method: 'POST', 
                             headers: {'Content-Type': 'application/json'}, 
                             body: JSON.stringify( regPersonInfo ),
@@ -60,10 +63,10 @@ const App = () => {
                      
               }
 
-       // OTHERWISE GET PERSON BY ID 
+       // ...OTHERWISE GET PERSON BY ID 
               else if (rdGetByID.checked == true) {
 
-                     fetch('https://person-resource-api.herokuapp.com' + regPersonInfo.ID) 
+                     fetch('https://git.heroku.com/person-resource-api.git' + regPersonInfo.ID) 
                      .then(res => res.json())
                      .then(data => {
                             let retrievePerson = data[0];
