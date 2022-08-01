@@ -13,12 +13,6 @@ let objPerson = {
 }
 
 
-// 1. git init
-// 2. git add -A (<---to add all files)
-// 3. git commit -m "Initial"
-// 4. git branch -M main
-// 5. git remote add origin https://github.com/jttreadway2020/example.git
-// 6. git push -u origin main
 
 
 const App = () => {
@@ -48,10 +42,10 @@ const App = () => {
               if (rdRegister.checked == true) {
                      console.log('MADE IT TO (( REGISTER )) FETCH STATEMENT')
 
-       //https://person-resource-api.herokuapp.com <-- Location of the API server (URL)
-       //https://git.heroku.com/person-resource-api.git <--ACTUAL ENDPOINT OF THE API
+       //https://person-resource-api.herokuapp.com/register <-- ENDPOINT of REGISTER PERSON
+       //https://git.heroku.com/person-resource-api.git/ <--Location OF THE API
 
-                     fetch('https://git.heroku.com/person-resource-api.git/register', {         
+                     fetch('https://person-resource-api.herokuapp.com/register', {         
                             method: 'POST', 
                             headers: {'Content-Type': 'application/json'}, 
                             body: JSON.stringify( regPersonInfo ),
@@ -66,7 +60,7 @@ const App = () => {
        // ...OTHERWISE GET PERSON BY ID 
               else if (rdGetByID.checked == true) {
 
-                     fetch('https://git.heroku.com/person-resource-api.git' + regPersonInfo.ID) 
+                     fetch('http://localhost:3000' + regPersonInfo.ID) 
                      .then(res => res.json())
                      .then(data => {
                             let retrievePerson = data[0];
