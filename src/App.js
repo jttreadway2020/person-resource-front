@@ -1,3 +1,15 @@
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+//THINGS TO DO:
+//
+//1. REMEMBER TO ADD ERROR TRAPPING
+//2. ADD SECURITY
+//3. ADD UPDATE/PUT OPERATION
+//4. ADD DELETE OPERATION
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+
+
 
 import React, { useState } from 'react';
 
@@ -11,8 +23,6 @@ let objPerson = {
        zipCode: '',
        country: '',   
 }
-
-
 
 
 const App = () => {
@@ -42,25 +52,36 @@ const App = () => {
               if (rdRegister.checked == true) {
                      console.log('MADE IT TO (( REGISTER )) FETCH STATEMENT')
 
-       //https://person-resource-api.herokuapp.com/register <-- ENDPOINT of REGISTER PERSON
-       //https://git.heroku.com/person-resource-api.git/ <--Location OF THE API
+                     //   "CORS ANYWHERE"
+                     //   MAKe MY OWN PROXY SERVER THROUGH WHICH TO PASS MY FETCH AND AVOID CORS PROBLEMS
+                     //
+                     //1. RUN THE FOLLOWING COMMANDS
+                     // 
+                     // git clone https://github.com/Rob--W/cors-anywhere.git
+                     // cd cors-anywhere/
+                     // npm install
+                     // heroku create
+                     // git push heroku master
+                     //
+                     //2. NEXT, prefix my request URL with the URL for my proxy
+                     //   ex. https://cryptic-headland-94862.herokuapp.com/https://person-resource-api.herokuapp.com//register
 
-                     fetch('https://person-resource-api.herokuapp.com/register', {         
+
+                     fetch('https://cryptic-headland-94862.herokuapp.com/https://person-resource-api.herokuapp.com//register', {         
                             method: 'POST', 
                             headers: {'Content-Type': 'application/json'}, 
                             body: JSON.stringify( regPersonInfo ),
                             //mode: 'no-cors'
-                     })   
+                     })
                      .then(res => res.json())
                      .then(data => console.log(data))
-                     .catch(err => console.log('response error status --> ' + res.status + res.statusText))   
-                     
+                     .catch(err => console.log('response error status --> ' + res.status + res.statusText))    
               }
 
-       // ...OTHERWISE GET PERSON BY ID 
+       // ...GET BY ID 
               else if (rdGetByID.checked == true) {
 
-                     fetch('http://localhost:3000' + regPersonInfo.ID) 
+                     fetch('https://person-resource-api.herokuapp.com/' + regPersonInfo.ID) 
                      .then(res => res.json())
                      .then(data => {
                             let retrievePerson = data[0];
